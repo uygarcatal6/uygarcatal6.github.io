@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uygar Çatal — Finance &amp; Economics | Interactive CV</title>
+
+    <!-- SEO / Social sharing (helps when a recruiter pastes the link in LinkedIn, WhatsApp, email) -->
+    <meta name="description" content="Uygar Çatal — Economics &amp; Finance graduate (University of Bologna, 102/110) with experience in treasury, FinTech R&amp;D and academic research. Interactive CV.">
+    <meta name="author" content="Uygar Çatal">
+    <meta name="theme-color" content="#05070a">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Uygar Çatal — Finance &amp; Economics | Interactive CV">
+    <meta property="og:description" content="Treasury · FinTech R&amp;D · Academic research. University of Bologna, 102/110. Top 0.05% YKS, SAT 1490, merit scholarships.">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Inline SVG favicon: an icy-blue light shard / monogram, matching the theme (Ç percent-encoded) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2305070a'/%3E%3Cpath d='M32 8 L40 32 L32 56 L24 32 Z' fill='none' stroke='%23aecbd6' stroke-width='2'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='22' fill='%23aecbd6' text-anchor='middle'%3EU%C3%87%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette inspired by the original "cave / light shaft" theme */
+            --bg-deep: #05070a;
+            --bg-ambient: #12161f;
+
+            --light-source: rgba(168, 199, 250, 0.08);
+            --light-accent: #aecbd6;   /* pale blue-white light */
+            --light-bright: #d7e7ee;
+            --light-sharp: rgba(255, 255, 255, 0.4);
+
+            --glass-surface: rgba(20, 25, 34, 0.6);
+            --glass-border: rgba(174, 203, 214, 0.15);
+
+            --text-main: #e0e6ed;
+            --text-muted: #9aabc4;   /* lightened slightly so secondary text meets WCAG AA on the dark bg */
+
+            --transition-speed: 0.5s;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: radial-gradient(circle at 50% -10%, #2a3d4f 0%, var(--bg-deep) 60%);
+            background-color: var(--bg-deep);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px 80px;
+            overflow-x: hidden;
+        }
+
+        /* Skip link for keyboard / screen-reader users */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--light-accent);
+            color: #05070a;
+            padding: 10px 16px;
+            font-weight: 600;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus { left: 0; }
+
+        .container {
+            max-width: 860px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        main { display: flex; flex-direction: column; gap: 28px; }
+
+        /* --- HEADER --- */
+        header { text-align: center; padding-bottom: 10px; position: relative; }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--light-accent), transparent);
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.6rem;
+            font-weight: 500;            /* closer to the template's engraved wordmark */
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 22px rgba(174, 203, 214, 0.35);
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: slideDown 1s forwards ease-out 0.2s;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--light-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out 0.5s;
+        }
+
+        .summary {
+            max-width: 660px;
+            margin: 22px auto 0;
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out 0.7s;
+        }
+
+        .contact-info {
+            margin-top: 26px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px 22px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out 0.9s;
+        }
+
+        .contact-info a, .contact-info span.ci {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-info a:hover, .contact-info a:focus-visible {
+            color: var(--light-accent);
+            text-shadow: 0 0 8px rgba(174, 203, 214, 0.5);
+            outline: none;
+        }
+
+        .contact-info .material-symbols-outlined { font-size: 18px; }
+
+        /* --- ACTION BUTTONS (Download PDF / Expand all) --- */
+        .actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-out 1s;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--light-accent);
+            background: rgba(168, 199, 250, 0.06);
+            border: 1px solid rgba(174, 203, 214, 0.3);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover, .btn:focus-visible {
+            background: rgba(168, 199, 250, 0.16);
+            border-color: var(--light-accent);
+            box-shadow: 0 0 16px rgba(174, 203, 214, 0.2);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .btn .material-symbols-outlined { font-size: 18px; }
+
+        /* --- STATS STRIP --- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 6px;
+        }
+
+        .stat {
+            background: linear-gradient(160deg, rgba(30, 35, 45, 0.7) 0%, rgba(10, 12, 16, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(174, 203, 214, 0.2);
+            border-left: 1px solid rgba(174, 203, 214, 0.1);
+            border-right: 1px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            padding: 20px 14px;
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+        }
+
+        .stat:hover {
+            transform: translateY(-3px);
+            border-top-color: rgba(174, 203, 214, 0.9);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5), inset 0 0 18px rgba(174,203,214,0.12);
+        }
+
+        .stat .num {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--light-bright);
+            letter-spacing: 1px;
+            text-shadow: 0 0 14px rgba(174, 203, 214, 0.3);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 2px;
+            min-height: 1.9rem;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 8px;
+        }
+
+        /* Non-digit qualifiers (/110, %, ≈, k, Top) sit in Manrope so only the pure figures stay in Cinzel */
+        .stat .num small {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.62em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--light-accent);
+        }
+
+        .stat .lbl {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* --- SECTION TITLES (real <h2> for a correct heading outline) --- */
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 10px 0 4px;
+            padding-left: 15px;
+            border-left: 2px solid var(--light-accent);
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background: linear-gradient(160deg, rgba(30, 35, 45, 0.7) 0%, rgba(10, 12, 16, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 4px;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background 0.25s ease-out, border-color 0.25s ease-out;
+
+            border-top: 1px solid rgba(174, 203, 214, 0.2);
+            border-left: 1px solid rgba(174, 203, 214, 0.1);
+            border-right: 1px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card.interactive { cursor: pointer; }
+
+        .card.interactive:hover {
+            transform: translateY(-3px) scale(1.01);
+            background: linear-gradient(145deg, rgba(174, 203, 214, 0.22) 0%, rgba(174, 203, 214, 0.04) 100%);
+            border-color: rgba(174, 203, 214, 0.4);
+            border-top: 1px solid rgba(174, 203, 214, 0.9);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(174, 203, 214, 0.15);
+        }
+
+        .card.interactive:focus-visible {
+            outline: none;
+            border-color: rgba(174, 203, 214, 0.6);
+            box-shadow: 0 0 0 2px rgba(174, 203, 214, 0.5), 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-header {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-content h3 {
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-content .role {
+            font-size: 0.95rem;
+            color: var(--light-accent);
+            font-weight: 300;
+            margin-bottom: 4px;
+        }
+
+        .header-content .meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-family: 'Manrope', sans-serif;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--light-accent);
+            border: 1px solid rgba(174,203,214,0.35);
+            border-radius: 2px;
+            padding: 2px 7px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .expand-icon {
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            transition: transform 0.4s ease, color 0.3s;
+        }
+
+        /* --- CARD BODY (animated open/close via JS-measured height) --- */
+        .card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .card.active .card-body { border-top: 1px solid rgba(255, 255, 255, 0.05); }
+
+        .card.active .expand-icon {
+            transform: rotate(180deg);
+            color: var(--light-accent);
+            text-shadow: 0 0 10px var(--light-accent);
+        }
+
+        .content-inner {
+            padding: 26px 30px 30px;
+            font-size: 0.95rem;
+            color: #d1d5db;
+            line-height: 1.75;
+        }
+
+        .content-inner p { margin-bottom: 10px; }
+        .content-inner p:last-child { margin-bottom: 0; }
+        .content-inner strong { color: var(--text-main); font-weight: 600; }
+        .content-inner a { color: var(--light-accent); text-decoration: none; border-bottom: 1px dotted rgba(174,203,214,0.5); transition: all 0.25s; }
+        .content-inner a:hover { color: var(--light-bright); border-bottom-color: var(--light-bright); text-shadow: 0 0 8px rgba(174,203,214,0.4); }
+
+        .content-inner ul { list-style: none; margin-top: 12px; }
+
+        .content-inner li {
+            margin-bottom: 12px;
+            padding-left: 22px;
+            position: relative;
+        }
+        .content-inner li:last-child { margin-bottom: 0; }
+
+        .content-inner li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 7px;
+            height: 1px;
+            background-color: var(--light-accent);
+            box-shadow: 0 0 5px var(--light-accent);
+        }
+
+        .divider { border: 0; border-top: 1px solid rgba(174,203,214,0.12); margin: 18px 0; }
+
+        /* --- SKILLS CHIPS --- */
+        .skills-block + .skills-block { margin-top: 22px; }
+        .skills-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .chip:hover {
+            border-color: var(--light-accent);
+            color: var(--light-accent);
+            background: rgba(174, 203, 214, 0.05);
+            box-shadow: 0 0 10px rgba(174, 203, 214, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* --- REVEAL ON SCROLL --- */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        footer a { color: var(--text-muted); text-decoration: none; border-bottom: 1px dotted rgba(154,171,196,0.45); }
+        footer a:hover { color: var(--light-accent); }
+
+        /* --- ANIMATIONS --- */
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 720px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2.3rem; letter-spacing: 3px; }
+            body { padding: 24px 14px 60px; }
+            .card-header { flex-direction: column; align-items: flex-start; gap: 10px; padding-right: 48px; }
+            .expand-icon { position: absolute; top: 24px; right: 24px; }
+            .content-inner { padding: 22px; }
+        }
+        @media (max-width: 400px) {
+            .stats { grid-template-columns: 1fr; }
+        }
+
+        /* --- PRINT: clean, expanded, light theme for PDF printing --- */
+        @media print {
+            body { background: #fff; color: #111; display: block; padding: 0; }
+            .container { max-width: 100%; gap: 10px; }
+            .skip-link, .actions, .expand-icon, header::after, footer .madeby { display: none !important; }
+            h1 { color: #111; text-shadow: none; }
+            .subtitle, .header-content .role { color: #2a4d6e; }
+            .summary, .header-content .meta, .contact-info, .stat .lbl { color: #444; }
+            .stat, .card { background: #fff !important; border: 1px solid #ccc !important; box-shadow: none !important; break-inside: avoid; }
+            .stat .num { color: #111; text-shadow: none; }
+            .stat .num small { color: #444; }
+            .card-body { max-height: none !important; overflow: visible !important; }
+            .content-inner { color: #222; }
+            .content-inner a, .contact-info a { color: #1a4f8a; }
+            .chip { color: #222; border-color: #aaa; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="container">
+
+    <header>
+        <h1>UYGAR ÇATAL</h1>
+        <div class="subtitle">Finance &amp; Economics Graduate</div>
+
+        <p class="summary">Economics &amp; Digital Transformation (MSc) · EU · Remote</p>
+
+        <div class="contact-info">
+            <span class="ci"><span class="material-symbols-outlined" aria-hidden="true">location_on</span> Cesena, Italy · Istanbul, Türkiye</span>
+            <a href="https://www.linkedin.com/in/uygar-catal31pp" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true">work</span> LinkedIn</a>
+            <a href="https://linktr.ee/UygarCatal" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true">link</span> Portfolio</a>
+            <a href="https://linktr.ee/UygarMusic" target="_blank" rel="noopener"><span class="material-symbols-outlined" aria-hidden="true">music_note</span> Music</a>
+        </div>
+
+        <div class="actions">
+            <button class="btn" id="toggleAll" type="button"><span class="material-symbols-outlined" aria-hidden="true">unfold_more</span> Expand all</button>
+        </div>
+    </header>
+
+    <main id="main">
+
+    <!-- EXPERIENCE -->
+    <h2 class="section-title reveal">Professional Experience</h2>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Project Trainee — FinTech <span class="tag">Current</span></h3>
+                <div class="role">Appcent</div>
+                <div class="meta">Jan 2026 – Present · Remote, Istanbul</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Contributing to a FinTech application project in a remote, team-based setting.</p>
+                <ul>
+                    <li>Support R&amp;D work, reporting and technical documentation.</li>
+                    <li>Use basic SQL and process diagrams to handle project tasks.</li>
+                    <li>Collaborate via shared documents and regular online progress updates.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Treasury Intern</h3>
+                <div class="role">QNB Bank JSC</div>
+                <div class="meta">Jul 2025 – Sep 2025 · Istanbul, Türkiye</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Worked within the Treasury &amp; Sales function, monitoring market risk and supporting trading desks.</p>
+                <ul>
+                    <li>Monitored daily FX, liquidity and interest-rate risks; prepared balance-sheet &amp; liquidity reports.</li>
+                    <li>Supported repo, swap and bond trades; maintained market pricing tables.</li>
+                    <li>Performed data collection, cleaning and analysis; report drafting and fiscal document verification.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Academic Research Assistant <span class="tag">Volunteer</span></h3>
+                <div class="role">University of Bologna — Assoc. Prof. Tommaso Sonno</div>
+                <div class="meta">Jul 2025 – Sep 2025 · Remote, Italy</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Supported an academic research project end-to-end, from data to drafting.</p>
+                <ul>
+                    <li>Data collection, cleaning, analysis and report drafting.</li>
+                    <li>Online meetings, remote collaboration and documentation.</li>
+                    <li>Strengthened data interpretation and academic communication skills.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Finance Trainee</h3>
+                <div class="role">ALDEM Steel</div>
+                <div class="meta">Jul 2024 – Sep 2024 · Erasmus Mobility + Traineeship Program</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Corporate finance and international-trade exposure within an Erasmus traineeship.</p>
+                <ul>
+                    <li>Budgeting and reporting support; fiscal document verification (P&amp;L, payrolls, debit/credit records).</li>
+                    <li>Observed international trade activities, gaining exposure to global market dynamics.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <h2 class="section-title reveal">Education</h2>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>MSc in Digital Transformation Management</h3>
+                <div class="role">Alma Mater Studiorum — Università di Bologna (LM-91)</div>
+                <div class="meta">Sept 2025 – Ongoing</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Technologies and methods for the information society — bridging management, engineering and analytics.</p>
+                <ul>
+                    <li>Awarded the <strong>HEMAP a.y. 2025/2026</strong> enrolment scholarship (≈ €5,000 lump-sum, highest-ranked applicant).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>MSc in Economics and Public Policy <span class="tag">Health Curriculum</span></h3>
+                <div class="role">Alma Mater Studiorum — Università di Bologna</div>
+                <div class="meta">Sept 2025 – Ongoing</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Health curriculum — applied economics, public policy and quantitative methods for health systems.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>BSc in Economics and Finance</h3>
+                <div class="role">Alma Mater Studiorum — Università di Bologna (L-33)</div>
+                <div class="meta">Graduated Jul 2025 · Final Mark 102/110</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <ul>
+                    <li><strong>Thesis:</strong> Decentralized Innovation and Venture Capital — US vs EU.</li>
+                    <li><strong>Coursework focus:</strong> finance, economics, quantitative analysis and data-driven decision-making.</li>
+                    <li><strong>Scholarship:</strong> "Unibo Action 1" Tuition Fee Waiver (≈ €20,000) — ranked 9th / 92 international students.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <h2 class="section-title reveal">Selected Achievements &amp; Test Scores</h2>
+
+    <section class="stats reveal" aria-label="Key metrics">
+        <div class="stat"><span class="num">102<small>/110</small></span><span class="lbl">BSc Final Mark<br>Univ. of Bologna</span></div>
+        <div class="stat"><span class="num"><small>Top</small> 0.05<small>%</small></span><span class="lbl">YKS 2022 Türkiye<br>1,492 / 3,008,029</span></div>
+        <div class="stat"><span class="num">1490</span><span class="lbl">SAT 2021<br>Math 800/800</span></div>
+        <div class="stat"><span class="num"><small>≈ €</small>25<small>k</small></span><span class="lbl">Merit Scholarships<br>Unibo + HEMAP</span></div>
+    </section>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Awards, Scholarships &amp; Standardized Tests</h3>
+                <div class="role">National &amp; International</div>
+                <div class="meta">Top 0.05% national ranking · ≈ €25k in merit scholarships</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <ul>
+                    <li><strong>Unibo Action 1 Tuition Fee Waiver</strong> (≈ €20,000) — ranked 9th / 92 international students.</li>
+                    <li><strong>HEMAP a.y. 2025/2026</strong> enrolment scholarship (≈ €5,000 lump-sum, highest-ranked applicant).</li>
+                    <li><strong>YKS 2022 (Türkiye):</strong> 1,492 / 3,008,029 — top 0.05%.</li>
+                    <li><strong>SAT 2021:</strong> 1490/1600 (Math 800/800).</li>
+                    <li><strong>AP Exams:</strong> 5/5 in Macroeconomics &amp; European History.</li>
+                    <li><strong>TOEFL iBT:</strong> 102/120.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <h2 class="section-title reveal">Skills &amp; Languages</h2>
+
+    <div class="card reveal">
+        <div class="card-header" style="flex-direction: column; align-items: flex-start;">
+            <div class="skills-block" style="width:100%;">
+                <div class="skills-label">Technical &amp; Data</div>
+                <div class="skills-container">
+                    <span class="chip">Excel (Reporting &amp; Dashboards)</span>
+                    <span class="chip">R / RStudio (Econometrics)</span>
+                    <span class="chip">Financial Analysis</span>
+                    <span class="chip">Data Cleaning &amp; Visualization</span>
+                    <span class="chip">SQL (Basic)</span>
+                    <span class="chip">Python (Basic)</span>
+                    <span class="chip">HTML / CSS</span>
+                </div>
+            </div>
+            <div class="skills-block" style="width:100%;">
+                <div class="skills-label">Languages &amp; Strengths</div>
+                <div class="skills-container">
+                    <span class="chip">Turkish — Native</span>
+                    <span class="chip">English — Advanced (C1)</span>
+                    <span class="chip">Italian — Intermediate</span>
+                    <span class="chip">Teamwork</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <h2 class="section-title reveal">Projects &amp; Publications</h2>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Shrinkflation &amp; the Turkish Cost-of-Living Crisis</h3>
+                <div class="role">Economic analysis · Data visualization</div>
+                <div class="meta">Featured in Cumhuriyet</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Long-form economic analysis of shrinkflation's impact on Turkish households, featured in
+                    <a href="https://kisa.link/VUwht" target="_blank" rel="noopener"><em>Cumhuriyet</em> newspaper</a>,
+                    paired with a self-built interactive visualization at
+                    <a href="https://inflation.vercel.app" target="_blank" rel="noopener">inflation.vercel.app</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card interactive reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-header">
+            <div class="header-content">
+                <h3>Gariplikler Edebiyat Dergisi <span class="tag">Founder &amp; Editor</span></h3>
+                <div class="role">Independent literary magazine</div>
+                <div class="meta">Full editorial cycle · 3 issues</div>
+            </div>
+            <span class="material-symbols-outlined expand-icon" aria-hidden="true">keyboard_arrow_down</span>
+        </div>
+        <div class="card-body">
+            <div class="content-inner">
+                <p>Founded, edited and published three issues — including an English-language author interview — managing the
+                    full editorial cycle from contributor briefs to layout and distribution
+                    (<a href="https://gariplikleredebiya.wixsite.com" target="_blank" rel="noopener">gariplikleredebiya.wixsite.com</a>).</p>
+                <hr class="divider">
+                <p><strong>UygarMusic:</strong> independent music projects exploring identity and surrealism, published on digital platforms
+                    (<a href="https://linktr.ee/UygarMusic" target="_blank" rel="noopener">linktr.ee/UygarMusic</a>).</p>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <footer>
+        <span class="madeby">Built as a single self-contained page · </span>© <span id="year"></span> Uygar Çatal
+    </footer>
+
+</div>
+
+<script>
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.card.interactive'));
+
+    // Wire up ARIA: link each card (role=button) to the region it controls, and name that region by its <h3>.
+    cards.forEach(function (card, i) {
+        var body = card.querySelector('.card-body');
+        var title = card.querySelector('h3');
+        if (!body) return;
+        var bodyId = 'card-body-' + i;
+        body.id = bodyId;
+        body.setAttribute('role', 'region');
+        card.setAttribute('aria-controls', bodyId);
+        if (title) {
+            var titleId = 'card-title-' + i;
+            title.id = titleId;
+            body.setAttribute('aria-labelledby', titleId);
+        }
+    });
+
+    // Re-measure every open card's body to its true content height (prevents clipping).
+    function remeasureOpen() {
+        document.querySelectorAll('.card.active .card-body').forEach(function (b) {
+            b.style.maxHeight = b.scrollHeight + 'px';
+        });
+    }
+
+    function setOpen(card, open) {
+        var body = card.querySelector('.card-body');
+        if (!body) return;
+        if (open) {
+            card.classList.add('active');
+            card.setAttribute('aria-expanded', 'true');
+            body.style.maxHeight = body.scrollHeight + 'px';
+        } else {
+            card.classList.remove('active');
+            card.setAttribute('aria-expanded', 'false');
+            body.style.maxHeight = '0px';
+        }
+    }
+
+    function toggleCard(card) { setOpen(card, !card.classList.contains('active')); updateToggleAllLabel(); }
+
+    cards.forEach(function (card) {
+        // Don't toggle when the user is actually clicking a link inside the card body.
+        card.addEventListener('click', function (e) {
+            if (e.target.closest('a')) return;
+            toggleCard(card);
+        });
+        card.addEventListener('keydown', function (e) {
+            if (e.target.closest('a')) return;
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCard(card); }
+        });
+    });
+
+    // Expand all / collapse all — intent derived from the live DOM, never a stale flag.
+    var toggleAllBtn = document.getElementById('toggleAll');
+    function updateToggleAllLabel() {
+        var anyClosed = cards.some(function (c) { return !c.classList.contains('active'); });
+        toggleAllBtn.innerHTML = anyClosed
+            ? '<span class="material-symbols-outlined" aria-hidden="true">unfold_more</span> Expand all'
+            : '<span class="material-symbols-outlined" aria-hidden="true">unfold_less</span> Collapse all';
+    }
+    toggleAllBtn.addEventListener('click', function () {
+        var anyClosed = cards.some(function (c) { return !c.classList.contains('active'); });
+        cards.forEach(function (card) { setOpen(card, anyClosed); });
+        updateToggleAllLabel();
+    });
+
+    // Reveal-on-scroll
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // rAF-throttled re-measure on resize so wrapped text never gets clipped.
+    var raf = null;
+    window.addEventListener('resize', function () {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(remeasureOpen);
+    });
+
+    // Web fonts can change wrapping after open; re-measure once they're ready.
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(remeasureOpen);
+    }
+
+    // Print: expand all (consistently, via setOpen) then restore the prior open/closed state afterward.
+    var prePrintState = null;
+    window.addEventListener('beforeprint', function () {
+        prePrintState = cards.map(function (c) { return c.classList.contains('active'); });
+        cards.forEach(function (card) { setOpen(card, true); });
+    });
+    window.addEventListener('afterprint', function () {
+        if (!prePrintState) return;
+        cards.forEach(function (card, i) { setOpen(card, prePrintState[i]); });
+        prePrintState = null;
+        updateToggleAllLabel();
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
